@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import ChatBox from "./components/ChatBox";
+import PdfUpload from "./components/PdfUpload";
 
 function App() {
+  const [selectedTab, setSelectedTab] = useState("chat");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
+      <h1>📄 Cheaty Cheaty</h1>
+      <div style={{ marginBottom: "20px" }}>
+        <button onClick={() => setSelectedTab("chat")}>💬 질문하기</button>
+        <button onClick={() => setSelectedTab("upload")}>📂 PDF 추가</button>
+      </div>
+
+      {selectedTab === "chat" && <ChatBox />}
+      {selectedTab === "upload" && <PdfUpload />}
     </div>
   );
 }
